@@ -1,0 +1,386 @@
+Set 1 - Problems 1 to 4
+
+1.Program to Add 2 numbers, read the inputs form the user and print 
+and print the result
+
+FlowChart:
+step1:- start
+step2:- take 2 numbers from user a,b
+step3:- sum=a+b
+step4:- give the output to the user
+step5:- stop
+
+code: #include<stdio.h>
+       int main()
+       {
+	int a,b,sum;
+	printf("enter the first number:");
+	scanf("%d",&a);
+        printf("enter the 2nd number:");
+	scanf("%d",&b);
+        sum=a+b;
+        printf("sum=%d",sum);
+        }
+-------------------------------------------------------------------------------------
+2.Program to Subtract 2 numbers, read the inputs form the user and print the result
+
+Flowchart:
+step1:- start
+step2:- take 2 numbers from user a,b
+step3:- sub=a-b
+step4:- give the output to the user
+step5:- stop
+
+Code1: #include<stdio.h>
+       int main()
+       {
+       	float n1, n2, res;  
+       	printf (" The first number is: ");  
+       	scanf ("  %d", &n1);  
+       	printf (" The second number is: ");  
+       	scanf ("  %d", &n2);  
+       	res = n1 - n2;    
+       	printf (" The subtraction of %d - %d is: %f", n1, n2, res); 
+       } 
+----------------------------------------------------------------------------------------
+code2:- #include<stdio.h>
+int diff(int a, int b);
+
+int main(){
+    int a,b;
+    printf("Enter the 1st number: ");
+    scanf("%d", &a);
+    printf("Enter the 2nd number: ");
+    scanf("%d", &b);
+    printf("The sum of %d and %d is: %d",a,b,diff(a,b));
+
+    return 0;
+}
+
+int diff(int a, int b){
+    if(a > b){
+        return (a-b);
+    }
+    else{
+        return (b-a);
+    }
+}
+-------------------------------------------------------------------------------------
+3. Write a program to read the maximum possible number 
+   from the user and add 1 to it and print its result
+
+code: #include <stdio.h>
+int main()
+{
+    long long int max_num;
+    printf("Enter the maximum possible number: ");
+    scanf("%lld", &max_num);
+    printf("The maximum possible number plus 1 is: %lld", max_num + 1);
+    return 0;
+}
+--------------------------------------------------------------------------------------
+4.Write a program to read the minimum possible from the user 
+and add 1 to it and print its result.
+
+Code:-#include <stdio.h>
+#include <limits.h>
+
+int main() {
+    int num;
+
+    printf("Enter a number greater than or equal to %d: ", INT_MIN);
+    scanf("%d", &num);
+
+    int result = num + 1;
+
+    printf("Result: %d\n", result);
+
+    return 0;
+}
+
+-------------------------------------------------------------------------------------
+5. Write a program to read the 0 from the user 
+and substarct 1 from it and print its result
+
+code:- #include <stdio.h>
+
+int main() {
+    int num;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    int result = num - 1;
+
+    printf("Result: %d\n", result);
+
+    return 0;
+}
+-------------------------------------------------------------------------------------
+6.Define an variable as const and try to read the user input into it
+
+code:- #include <stdio.h>
+
+int main() {
+    const int num = 10;
+    printf("The value of num is: %d\n", num);
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    printf("The value of num is now: %d\n", num);
+
+    return 0;
+}
+-------------------------------------------------------------------------------------
+Set 1 - Problems 5 to 10
+
+1.Write a program to find the largest of 2 numbers, 
+read the inputs form the user and print the result.
+
+Code:- #include <stdio.h>
+
+int main() {
+    int num1, num2, max;
+
+    printf("Enter the first number: ");
+    scanf("%d", &num1);
+
+    printf("Enter the second number: ");
+    scanf("%d", &num2);
+
+    max = (num1 > num2) ? num1 : num2;
+
+    printf("The largest number is %d.\n", max);
+
+    return 0;
+}
+--------------------------------------------------------------------------------------
+2. Write a program to find the smallest of 2 numbers, 
+read the inputs form the user and print the result.
+
+Code:- #include <stdio.h>
+
+int main() {
+    int num1, num2, min;
+
+    printf("Enter the first number: ");
+    scanf("%d", &num1);
+
+    printf("Enter the second number: ");
+    scanf("%d", &num2);
+
+    min = (num1 < num2) ? num1 : num2;
+
+    printf("The smallest number is %d.\n", min);
+
+    return 0;
+}
+-----------------------------------------------------------------------------------------
+3. Write a program to read 3 inputs form the user 
+and check if the 1st input is greater than 2nd and 3rd input
+
+Code:-#include <stdio.h>
+
+int main() {
+    int num1, num2, num3;
+
+    printf("Enter the first number: ");
+    scanf("%d", &num1);
+
+    printf("Enter the second number: ");
+    scanf("%d", &num2);
+
+    printf("Enter the third number: ");
+    scanf("%d", &num3);
+
+    if (num1 > num2 && num1 > num3) {
+        printf("%d is greater than %d and %d.\n", num1, num2, num3);
+    } else {
+        printf("%d is not greater than %d and %d.\n", num1, num2, num3);
+    }
+
+    return 0;
+}
+-----------------------------------------------------------------------------------------
+4.Write a program to read 3 inputs form the user and 
+check if the 1st input is less that 2nd or 3rd input.
+
+Code:- #include <stdio.h>
+
+int main() {
+    int num1, num2, num3;
+
+    printf("Enter three integers: ");
+    scanf("%d %d %d", &num1, &num2, &num3);
+
+    if (num1 < num2 || num1 < num3) {
+        printf("The first number is less than at least one of the other two numbers.\n");
+    } else {
+        printf("The first number is not less than either of the other two numbers.\n");
+    }
+
+    return 0;
+}
+
+-----------------------------------------------------------------------------------------
+5.Write a program to print the truth table of AND, OR, XOR gates.
+
+Code:-#include <stdio.h>
+
+int main() {
+    int a, b;
+
+    printf("Truth Table of AND, OR, and XOR gates:\n");
+    printf("a\tb\ta AND b\ta OR b\ta XOR b\n");
+    
+    for(a = 0; a <= 1; a++) {
+        for(b = 0; b <= 1; b++) {
+            printf("%d\t%d\t%d\t%d\t%d\n", a, b, a && b, a || b, a ^ b);
+        }
+    }
+
+    return 0;
+}
+-----------------------------------------------------------------------------------------
+Set 2 - Problems 1 to 3
+
+1. write a program to print a number for -100 to 200 using all the loops (for, while, do while)
+
+Code:- #include <stdio.h>
+
+int main() {
+    int i;
+    
+    // using for loop
+    printf("Printing numbers from -100 to 200 using for loop:\n");
+    for (i = -100; i <= 200; i++) {
+        printf("%d ", i);
+    }
+    
+    // using while loop
+    printf("\n\nPrinting numbers from -100 to 200 using while loop:\n");
+    i = -100;
+    while (i <= 200) {
+        printf("%d ", i);
+        i++;
+    }
+    
+    // using do-while loop
+    printf("\n\nPrinting numbers from -100 to 200 using do-while loop:\n");
+    i = -100;
+    do {
+        printf("%d ", i);
+        i++;
+    } while (i <= 200);
+    
+    return 0;
+}
+-----------------------------------------------------------------------------------------
+2.write a program to print 'A' - 'Z' to 'a' - 'z' using while loop.
+
+Code:- #include <stdio.h>
+
+int main() {
+    char upper = 'A';
+    char lower = 'a';
+
+    printf("Printing uppercase and lowercase letters using a while loop:\n");
+    while (upper <= 'Z' && lower <= 'z') {
+        printf("%c %c ", upper, lower);
+        upper++;
+        lower++;
+    }
+
+    return 0;
+}
+-----------------------------------------------------------------------------------------
+3. write a program read an array of 5 elements form the user (use for loop to read),
+ print array elements using while loop
+
+Code:- #include <stdio.h>
+
+int main() {
+    int arr[5];
+    int i = 0;
+    
+    // Read the array using a for loop
+    printf("Enter 5 integers:\n");
+    for (i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    // Print the array using a while loop
+    printf("Array elements:\n");
+    i = 0;
+    while (i < 5) {
+        printf("%d ", arr[i]);
+        i++;
+    }
+    
+    return 0;
+}
+-----------------------------------------------------------------------------------------
+1. Write different functions to    
+- Add 2 numbersint add
+  (int n1, int n2);    
+- Subtract 2 numbersint sub
+  (int n1, int n2);    
+- Square of a number int square
+  (int n);    
+- Find even of odd number, return 1 in case of odd and 0 in case of even
+  int even_or_odd(int n);
+
+Code:- #include <stdio.h>
+
+// Function to add two integers
+int add(int n1, int n2) {
+    return n1 + n2;
+}
+
+// Function to subtract two integers
+int sub(int n1, int n2) {
+    return n1 - n2;
+}
+
+// Function to find the square of an integer
+int square(int n) {
+    return n * n;
+}
+
+// Function to check if an integer is even or odd
+int even_or_odd(int n) {
+    if (n % 2 == 0) {
+        return 0; // Return 0 for even
+    } else {
+        return 1; // Return 1 for odd
+    }
+}
+
+int main() {
+    int a = 5, b = 7;
+    int result;
+
+    // Test the add function
+    result = add(a, b);
+    printf("%d + %d = %d\n", a, b, result);
+
+    // Test the subtract function
+    result = sub(a, b);
+    printf("%d - %d = %d\n", a, b, result);
+
+    // Test the square function
+    result = square(a);
+    printf("The square of %d is %d\n", a, result);
+
+    // Test the even_or_odd function
+    if (even_or_odd(a)) {
+        printf("%d is odd\n", a);
+    } else {
+        printf("%d is even\n", a);
+    }
+
+    return 0;
+}
+
+-----------------------------------------------------------------------------------------
+
+
