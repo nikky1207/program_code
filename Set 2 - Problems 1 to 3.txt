@@ -1,0 +1,75 @@
+1. write a program to print a number for -100 to 200 using all the loops (for, while, do while)
+
+Code:- #include <stdio.h>
+
+int main() {
+    int i;
+    
+    // using for loop
+    printf("Printing numbers from -100 to 200 using for loop:\n");
+    for (i = -100; i <= 200; i++) {
+        printf("%d ", i);
+    }
+    
+    // using while loop
+    printf("\n\nPrinting numbers from -100 to 200 using while loop:\n");
+    i = -100;
+    while (i <= 200) {
+        printf("%d ", i);
+        i++;
+    }
+    
+    // using do-while loop
+    printf("\n\nPrinting numbers from -100 to 200 using do-while loop:\n");
+    i = -100;
+    do {
+        printf("%d ", i);
+        i++;
+    } while (i <= 200);
+    
+    return 0;
+}
+-----------------------------------------------------------------------------------------
+2.write a program to print 'A' - 'Z' to 'a' - 'z' using while loop.
+
+Code:- #include <stdio.h>
+
+int main() {
+    char upper = 'A';
+    char lower = 'a';
+
+    printf("Printing uppercase and lowercase letters using a while loop:\n");
+    while (upper <= 'Z' && lower <= 'z') {
+        printf("%c %c ", upper, lower);
+        upper++;
+        lower++;
+    }
+
+    return 0;
+}
+-----------------------------------------------------------------------------------------
+3. write a program read an array of 5 elements form the user (use for loop to read),
+ print array elements using while loop
+
+Code:- #include <stdio.h>
+
+int main() {
+    int arr[5];
+    int i = 0;
+    
+    // Read the array using a for loop
+    printf("Enter 5 integers:\n");
+    for (i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    // Print the array using a while loop
+    printf("Array elements:\n");
+    i = 0;
+    while (i < 5) {
+        printf("%d ", arr[i]);
+        i++;
+    }
+    
+    return 0;
+}
