@@ -1,0 +1,274 @@
+6.1. Toggle case
+Codes:-
+
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+void toggleCase(char str[]);
+
+int main() {
+    char str[100];
+
+    printf("Enter a string: ");
+    fgets(str, 100, stdin);
+
+    toggleCase(str);
+
+    printf("Toggled case string: %s", str);
+
+    return 0;
+}
+
+void toggleCase(char str[]) {
+    int len = strlen(str);
+
+    for (int i = 0; i < len; i++) {
+        if (isupper(str[i])) {
+            str[i] = tolower(str[i]);
+        }
+        else if (islower(str[i])) {
+            str[i] = toupper(str[i]);
+        }
+    }
+}
+---------------------------------------------------------------------------------
+6.2. Convert String as Integer
+Codes:-
+
+#include <stdio.h>
+
+int stringToInt(char str[]);
+
+int main() {
+    char str[100];
+
+    printf("Enter a string of digits: ");
+    scanf("%s", str);
+
+    int num = stringToInt(str);
+
+    printf("Integer value: %d", num);
+
+    return 0;
+}
+
+int stringToInt(char str[]) {
+    int res = 0;
+    int i = 0;
+
+    while (str[i] != '\0') {
+        int ival = str[i] - '0';
+        res = res * 10 + ival;
+        i++;
+    }
+
+    return res;
+}
+----------------------------------------------------------------------------------
+6.3. Compute Total Seconds
+Codes:-
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main() {
+    char input[9];
+    int hh, mm, ss, total_seconds;
+    char *token;
+
+    // Read input string from user
+    printf("Enter time in format hh:mm:ss: ");
+    fgets(input, 9, stdin);
+
+    // Split input string into hh, mm, ss
+    token = strtok(input, ":");
+    hh = strtoul(token, NULL, 10);
+    token = strtok(NULL, ":");
+    mm = strtoul(token, NULL, 10);
+    token = strtok(NULL, ":");
+    ss = strtoul(token, NULL, 10);
+
+    // Compute total seconds
+    total_seconds = hh * 3600 + mm * 60 + ss;
+
+    // Print result
+    printf("Total seconds: %d\n", total_seconds);
+
+    return 0;
+}
+---------------------------------------------------------------------------------
+6.4. Count no. of days
+Codes:-
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// function to check if a year is a leap year
+int isLeapYear(int year) {
+    if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+// function to get the number of days in a month
+int getDaysInMonth(int month, int year) {
+    int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if (month == 2 && isLeapYear(year)) {
+        return 29;
+    } else {
+        return daysInMonth[month - 1];
+    }
+}
+
+// function to calculate the number of days between two dates
+int countDays(char* date1, char* date2) {
+    // split the dates into day, month, and year
+    char* d1 = strtok(date1, "/");
+    char* m1 = strtok(NULL, "/");
+    char* y1 = strtok(NULL, "/");
+    char* d2 = strtok(date2, "/");
+    char* m2 = strtok(NULL, "/");
+    char* y2 = strtok(NULL, "/");
+
+    int day1 = atoi(d1);
+    int month1 = atoi(m1);
+    int year1 = atoi(y1);
+    int day2 = atoi(d2);
+    int month2 = atoi(m2);
+    int year2 = atoi(y2);
+
+    // calculate the number of days
+    int days = 0;
+    while (year1 < year2 || (year1 == year2 && (month1 < month2 || (month1 == month2 && day1 < day2)))) {
+        days++;
+        day1++;
+        if (day1 > getDaysInMonth(month1, year1)) {
+            day1 = 1;
+            month1++;
+        }
+        if (month1 > 12) {
+            month1 = 1;
+            year1++;
+        }
+    }
+
+    return days;
+}
+
+int main() {
+    char date1[11], date2[11];
+    printf("Enter date 1 in DD/MM/YYYY format: ");
+    fgets(date1, 11, stdin);
+    printf("Enter date 2 in DD/MM/YYYY format: ");
+    fgets(date2, 11, stdin);
+
+    // remove newline characters from input strings
+    date1[strcspn(date1, "\n")] = 0;
+    date2[strcspn(date2, "\n")] = 0;
+
+    int days = countDays(date1, date2);
+    printf("Number of days between %s and %s: %d\n", date1, date2, days);
+
+    return 0;
+}
+---------------------------------------------------------------------------------
+6.5. Rotate String
+Codes:-
+
+#include <stdio.h>
+#include <string.h>
+
+void rotateLeft(char str[], int k);
+void rotateRight(char str[], int k);
+
+int main() {
+    char str[100], direction;
+    int k;
+    printf("Enter a string: ");
+    scanf("%s", str);
+    printf("Enter the number of rotations: ");
+    scanf("%d", &k);
+    printf("Enter 'L' for left rotation or 'R' for right rotation: ");
+    scanf(" %c", &direction);
+    if (direction == 'L') {
+        rotateLeft(str, k);
+        printf("Result: %s\n", str);
+    }
+    else if (direction == 'R') {
+        rotateRight(str, k);
+        printf("Result: %s\n", str);
+    }
+    else {
+        printf("Invalid direction entered!\n");
+    }
+    return 0;
+}
+
+void rotateLeft(char str[], int k) {
+    int len = strlen(str);
+    k %= len;
+    char temp[k+1];
+    strncpy(temp, str, k);
+    temp[k] = '\0';
+    memmove(str, str+k, len-k+1);
+    strncpy(str+len-k, temp, k+1);
+}
+
+void rotateRight(char str[], int k) {
+    int len = strlen(str);
+    k %= len;
+    char temp[k+1];
+    strncpy(temp, str+len-k, k);
+    temp[k] = '\0';
+    memmove(str+k, str, len-k+1);
+    strncpy(str, temp, k+1);
+}
+---------------------------------------------------------------------------------
+6.6. Data Validation
+Codes:-
+
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char email[100];
+    int i, at_position = -1, dot_position = -1, len;
+    printf("Enter an email address: ");
+    scanf("%s", email);
+    len = strlen(email);
+
+    // check username
+    for(i = 0; i < len; i++) {
+        if(!isalnum(email[i]) && email[i] != '.') {
+            printf("Invalid email address.\n");
+            return 0;
+        }
+        if(email[i] == '@') {
+            at_position = i;
+            break;
+        }
+    }
+
+    // check domain name and extension
+    for(i = at_position + 1; i < len; i++) {
+        if(!isalpha(email[i])) {
+            printf("Invalid email address.\n");
+            return 0;
+        }
+        if(email[i] == '.') {
+            dot_position = i;
+        }
+    }
+    if(dot_position == -1 || dot_position < at_position) {
+        printf("Invalid email address.\n");
+        return 0;
+    }
+    printf("Valid email address.\n");
+    return 0;
+}
