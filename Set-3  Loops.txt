@@ -1,0 +1,281 @@
+3.1.Sum of Number Range
+Codes:-
+
+#include <stdio.h>
+
+int main()
+{
+    int start = 16, end = 25, i, sum = 0;
+
+    for(i = start; i <= end; i++)
+    {
+        sum += i;
+    }
+
+    printf("The sum of numbers from %d to %d is: %d", start, end, sum);
+
+    return 0;
+}
+--------------------------------------------------------------------------------------------
+3.2.Sum of Digits in Given Number
+Code:-
+
+#include <stdio.h>
+
+int main()
+{
+    int n = 32788327, rem, sum = 0;
+
+    while(n != 0)
+    {
+        rem = n % 10;
+        sum += rem;
+        n /= 10;
+    }
+
+    printf("The sum of digits in the given number is: %d", sum);
+
+    return 0;
+}
+--------------------------------------------------------------------------------------------
+3.3.Reverse The Number
+Code:-
+
+#include <stdio.h>
+
+int main()
+{
+    int number = 3278, rem, rev = 0;
+
+    while(number != 0)
+    {
+        rem = number % 10;
+        rev = rev * 10 + rem;
+        number /= 10;
+    }
+
+    printf("The reversed number is: %d", rev);
+
+    return 0;
+}
+
+TODO : Extend this prob into Palindrome or not
+
+Code:- 
+#include <stdio.h>
+
+int main()
+{
+    int number = 3278, rem, rev = 0, temp;
+
+    temp = number; // store the original number in a temporary variable
+
+    while(number != 0)
+    {
+        rem = number % 10;
+        rev = rev * 10 + rem;
+        number /= 10;
+    }
+
+    if(temp == rev)
+    {
+        printf("The number %d is a palindrome", temp);
+    }
+    else
+    {
+        printf("The number %d is not a palindrome", temp);
+    }
+
+    return 0;
+}
+-----------------------------------------------------------------------------------------
+3.4. GCD of Two Numbers
+Code:-
+
+#include <stdio.h>
+
+int gcd(int n1, int n2) {
+    int rem;
+    while (n2 != 0) {
+        rem = n1 % n2;
+        n1 = n2;
+        n2 = rem;
+    }
+    return n1;
+}
+
+int main() {
+    int n1 = 1402420242042042040;
+    int n2 = 130210130210130801308050805030503020302010201003;
+    printf("GCD of %d and %d is %d\n", n1, n2, gcd(n1, n2));
+    return 0;
+}
+---------------------------------------------------------------------------------
+3.5.LCM of Two Numbers
+Code:-
+
+#include <stdio.h>
+
+int gcd(int n1, int n2) {
+    int rem;
+    while (n2 != 0) {
+        rem = n1 % n2;
+        n1 = n2;
+        n2 = rem;
+    }
+    return n1;
+}
+
+int lcm(int n1, int n2) {
+    return (n1 * n2) / gcd(n1, n2);
+}
+
+int main() {
+    int n1 = 47;
+    int n2 = 87;
+    printf("LCM of %d and %d is %d\n", n1, n2, lcm(n1, n2));
+    return 0;
+}
+---------------------------------------------------------------------------------
+3.6.Factorial
+Code:-
+
+#include <stdio.h>
+
+int main() {
+    int n = 6;
+    int res = 1;
+    for (int i = 1; i <= n; i++) {
+        res *= i;
+    }
+    printf("Factorial of %d is %d\n", n, res);
+    return 0;
+}
+---------------------------------------------------------------------------------
+3.7. Sum of Factors
+Code:-
+
+#include <stdio.h>
+
+int main() {
+    int n = 28;
+    int sum = 0;
+    for (int i = 1; i <= n; i++) {
+        if (n % i == 0) {
+            sum += i;
+        }
+    }
+    printf("Sum of factors of %d is %d\n", n, sum);
+    if (sum == 2 * n) {
+        printf("%d is a Perfect Number\n", n);
+    } else {
+        printf("%d is not a Perfect Number\n", n);
+    }
+    return 0;
+}
+---------------------------------------------------------------------------------
+3.8.Prime Number or Not
+Code:-
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <math.h>
+
+int main() {
+    int n;
+    bool flag = true;
+    int limit = sqrt(n);
+   printf("enter the number");
+   scanf("%d",&n);
+    for (int i = 2; i <= limit; i++) {
+        if (n % i == 0) {
+            flag = false;
+            break;
+        }
+    }
+    if (flag) {
+        printf("%d is a prime number\n", n);
+    } else {
+        printf("%d is not a prime number\n", n);
+    }
+    return 0;
+}
+---------------------------------------------------------------------------------
+3.9. Cumulative Interest Calculation
+Code:-
+
+#include <stdio.h>
+
+int main() {
+    float principal = 1000;
+    float annual_interest_rate = 0.12;
+    float quarterly_interest_rate = annual_interest_rate / 4;
+    float accumulated_amount = principal;
+    int n = 8;
+
+    printf("Quarter\tPrinciple\tInterest\tAccumulated Amount\n");
+    printf("Q1\t%f\t%f\t%f\n", principal, 0.0, accumulated_amount);
+
+    for (int i = 2; i <= n; i++) {
+        float interest = accumulated_amount * quarterly_interest_rate;
+        accumulated_amount += interest;
+        printf("Q%d\t%f\t%f\t%f\n", i, accumulated_amount - interest, interest, accumulated_amount);
+    }
+
+    return 0;
+}
+---------------------------------------------------------------------------------
+3.10. Fibonacci Series
+Code:-
+
+#include <stdio.h>
+
+int main() {
+    int n = 10;
+    int n1 = 0, n2 = 1, term;
+
+    printf("Fibonacci series: ");
+    printf("%d %d ", n1, n2);
+
+    for (int i = 2; i < n; i++) {
+        term = n1 + n2;
+        printf("%d ", term);
+        n1 = n2;
+        n2 = term;
+    }
+
+    return 0;
+}
+---------------------------------------------------------------------------------
+3.11. nCr Calculation
+Code:-
+
+#include <stdio.h>
+
+// Function to calculate the factorial of a number
+int factorial(int n) {
+    int fact = 1;
+    for (int i = 1; i <= n; i++) {
+        fact *= i;
+    }
+    return fact;
+}
+
+// Function to calculate nCr
+int nCr(int n, int r) {
+    int numerator = factorial(n);
+    int denominator = factorial(r) * factorial(n-r);
+    int result = numerator / denominator;
+    return result;
+}
+
+int main() {
+    int N1, N2;
+    printf("Enter the value of n: ");
+    scanf("%d", &N1);
+    printf("Enter the value of r: ");
+    scanf("%d", &N2);
+    int result = nCr(N1, N2);
+    printf("%dC%d = %d", N1, N2, result);
+    return 0;
+}
