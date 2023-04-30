@@ -1,0 +1,153 @@
+4.1.List/Count of Prime Numbers
+Codes:-
+
+#include <stdio.h>
+#include <stdbool.h>
+
+bool isPrime(int n) {
+    if (n <= 1) {
+        return false;
+    }
+    for (int i = 2; i*i <= n; i++) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    int start,end,count = 0;
+    printf("enter start of the range");
+    scanf("%d",&start);
+    printf("enter end of the range");
+    scanf("%d",&end);
+    printf("List of prime numbers between %d and %d:\n", start, end);
+    for (int n = start; n <= end; n++) {
+        bool is_prime = isPrime(n);
+        if (is_prime) {
+            printf("%d ", n);
+            count++;
+        }
+    }
+    printf("\nTotal count of prime numbers between %d and %d: %d", start, end, count);
+    return 0;
+}
+---------------------------------------------------------------------------------
+4.2.Digital Root of Given Number
+Codes:-
+
+#include <stdio.h>
+
+int digitalRoot(int n) {
+    if (n < 10) {
+        return n;
+    }
+    int sum = 0;
+    while (n > 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+    return digitalRoot(sum);
+}
+
+int main() {
+    int num1,num2;
+    printf("enter the number");
+    scanf("%d",&num1);
+    printf("The digital root of %d is %d\n", num1, digitalRoot(num1));
+    printf("enter the 2nd number");
+    scanf("%d",&num2);
+    printf("The digital root of %d is %d\n", num2, digitalRoot(num2));
+    return 0;
+}
+---------------------------------------------------------------------------------
+4.3.Count Leap Years in given Range
+Codes:-
+
+#include <stdio.h>
+
+int main() {
+    int start,end,count=0;
+    printf("enter the 1st number of the range:");
+    scanf("%d",&start);
+    printf("enter the 1st number of the range:");
+    scanf("%d",&end);
+    for (int year = start; year <= end; year++) {
+        int isLeap = 0;
+        if (year % 4 == 0) {
+            if (year % 100 == 0) {
+                if (year % 400 == 0) {
+                    isLeap = 1;
+                }
+            } else {
+                isLeap = 1;
+            }
+        }
+        if (isLeap) {
+            count++;
+        }
+    }
+
+    printf("The number of leap years between %d and %d is %d\n", start, end, count);
+
+    return 0;
+}
+----------------------------------------------------------------------------------------
+4.4.Sum of Triangular Numbers
+codes:-
+
+#include <stdio.h>
+
+int main() {
+    int end,total=0; 
+    printf("enter the end number");
+    scanf("%d",&end);
+
+    // Outer loop to iterate over all the integers up to 'end'
+    for (int n = 1; n <= end; n++) {
+        int triangular = 0; // Initialize the current triangular number to 0
+
+        // Inner loop to calculate the sum of integers from 1 to 'n'
+        for (int i = 1; i <= n; i++) {
+            triangular += i; // Add each integer to the current triangular number
+        }
+
+        total += triangular; // Add the current triangular number to the total sum
+        printf("%d ", triangular); // Print the current triangular number
+    }
+
+    // Print the total sum of triangular numbers
+    printf("\nThe total sum of triangular numbers up to %d is %d\n", end, total);
+
+    return 0;
+}
+---------------------------------------------------------------------------------
+Additional: pascal triangle
+Codes:-
+
+#include <stdio.h>
+
+int main() {
+    int rows, coef = 1;
+
+    printf("Enter the number of rows: ");
+    scanf("%d", &rows);
+
+    for(int i = 0; i < rows; i++) {
+        for(int space = 1; space <= rows - i; space++) {
+            printf("  ");
+        }
+
+        for(int j = 0; j <= i; j++) {
+            if(j == 0 || i == 0) {
+                coef = 1;
+            } else {
+                coef = coef * (i - j + 1) / j;
+            }
+            printf("%4d", coef);
+        }
+        printf("\n");
+    }
+    return 0;
+}
